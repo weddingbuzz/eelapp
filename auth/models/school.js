@@ -8,6 +8,7 @@ var School = sequelize.define(
       primaryKey: true,
     },
     name: Sequelize.STRING,
+    type: Sequelize.STRING,
     about: Sequelize.STRING,
     medium: Sequelize.INTEGER,
     code: Sequelize.STRING,

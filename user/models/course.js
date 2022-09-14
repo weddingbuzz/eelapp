@@ -1,7 +1,9 @@
 import Sequelize from "sequelize";
 import sequelize from "../config/database.js"; 
 import MyClass from "./myClass.js";
+import NetCourseCoverage from "./net_course_coverage.js";
 import Section from "./section.js";
+import Syllabus from "./syllabus.js";
 import Teacher from "./teacher.js";
 
 const Course = sequelize.define(
@@ -70,6 +72,12 @@ Course.belongsTo(MyClass, {
 });
 Course.belongsTo(Teacher, {
     foreignKey: "teacher_id", // change column name
+});
+Course.hasOne(Syllabus, {
+    foreignKey: "course_id", // change column name
+});
+Course.hasMany(NetCourseCoverage, {
+    foreignKey: "course_id", // change column name
 });
 
 export default Course;

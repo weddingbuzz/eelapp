@@ -11,6 +11,7 @@ import assignmentService from "../services/assignmentService.js";
 import eventService from "../services/eventService.js";
 import MyClass from "../models/myClass.js";
 import Section from "../models/section.js";
+import School from "../models/school.js";
 
 export default {
     getMenu,
@@ -40,6 +41,7 @@ async function getMenu(req, res) {
  * @returns {Promise<*>}
  */
 async function getDashboard(req, res) {
+   
     try {
         // We only pass the body object, never the req object
         let whereStatement = {};
@@ -61,6 +63,9 @@ async function getDashboard(req, res) {
                 {
                     model: Section,
                 },
+                {
+                    model: School,
+                },
             ],
         });
         let classteacher = await userService.getClassTeacherBySectionId(
@@ -75,8 +80,11 @@ async function getDashboard(req, res) {
         let routines = await courseService.getCourses(
             user.school_id, user.section_id,
         );
+
+        let session = await helper.getCurrentSession(user.School.type);
+
         let syllabuses = await syllabusService.getActiveSyllabus(
-            user.school_id, user.class_id
+            user.school_id, user.class_id, session
         );
         let assignments = await assignmentService.getActiveAssignments(
             user.school_id, user.class_id

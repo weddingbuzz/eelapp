@@ -15,6 +15,10 @@ const School = sequelize.define(
             type: Sequelize.STRING,
             allowNull: false,
         },
+        type: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
         about: {
             type: Sequelize.STRING,
             allowNull: false,

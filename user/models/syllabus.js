@@ -19,6 +19,10 @@ const Syllabus = sequelize.define(
             type: Sequelize.STRING,
             allowNull: false,
         },
+        course_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
         description: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -28,6 +32,10 @@ const Syllabus = sequelize.define(
             allowNull: false,
         },
         class_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
+        section_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
         },
